@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comme">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/status.css">
+    <title>
+
+        <%= title %>
+    </title>
+</head>
+
+
+<body>
+    <div>
+        <h2><a href="/habits"><i class="fas fa-arrow-left"></i></a>
+            <%= title %>
+        </h2>
+    </div>
+
+    <h3 class="habit-title">
+        <%= habit.name %>
+    </h3>
+    <div class="statuses">
+        <% for(let i of status ) { %>
+            <div class="status-item">
+                <%= moment(i.createdAt).format('Do MMMM YYYY') %>
+                    <button habit="<%= habit._id %>" id="<%= i._id %>" onclick="updateStatus(this)" createdAt="<%= i.createdAt %>">  
+            <% if (i.value === "none") { %>
+            <i class="fas fa-ban"></i>
+            <%} else { %>
+                <% if (i.value === "done") { %>
+                    <i class="fas fa-check"></i>
+                    <%} else { %>
+                        <i class="fas fa-times"></i>
+                    <% } %>
+            <% } %> 
+        </button>
+
+            </div>
+            <%} %>
+    </div>
+
+
+    <dialog id="statusDialog">
+        <form>
+            <p>
+                <label>Select Status:
+                <select>
+                    <option value="done">Done</option>
+                    <option value="not-done">Not Done</option>
+                    <option value="none">None</option>
+                </select>
+            </label>
+            </p>
+            <div>
+                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button id="confirmBtn" value="default">Submit</button>
+            </div>
+        </form>
+    </dialog>
+
+
+    <script>
+        // stringify the data passed from router to ejs (within the EJS template only)
+        var parsed_data = JSON.parse('<%- JSON.stringify({ status, habit }) %>')
+    </script>
+
+    <script src="/js/status.js"></script>
+</body>

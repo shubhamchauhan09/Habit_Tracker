@@ -1,0 +1,22 @@
+.status-item {
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    height: 100px;
+    justify-content: space-between;
+}
+
+.statuses {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.habit-title {
+    display: flex;
+    justify-content: center;
+}

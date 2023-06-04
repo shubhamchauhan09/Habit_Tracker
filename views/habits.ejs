@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comme">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/habit.css">
+    <title>
+
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <!-- <%= title %> -->
+    <h1 id="page-heading">
+        <div>
+            <i class="fas fa-medal"></i> My habits!
+        </div>
+
+        <button id="showDialog">Add habit</button>
+    </h1>
+    <div class="content">
+        <h3>
+            <i class="fas fa-solid fa-user"></i>
+            <span class="user">Welcome <%= user.name %></span>
+        </h3>
+
+        <div class="habits card">
+            <% for(let i of habits){%>
+                <div class="habit">
+                    <a href="/status/<%= i._id%>">
+                        <span class="name">
+                            <%= i.name%>
+                        </span>
+                    </a>
+                </div>
+                <%} %>
+        </div>
+
+
+        <dialog id="favDialog">
+            <form>
+                <p>
+                    <label>habit Name:
+                        <input id="name" />
+                    </label>
+                </p>
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Submit</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
+
+    <script>
+        // stringify the data passed from router to ejs (within the EJS template only)
+        var parsed_data = JSON.parse('<%- JSON.stringify({ habits, user }) %>')
+    </script>
+
+    <script src="/js/habit.js"></script>
+</body>
+
+</html>

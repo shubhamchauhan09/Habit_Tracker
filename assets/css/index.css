@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: 'Comme', serif;
+}
+
+button {
+    background: none;
+    border: 1px solid #e8e8e8;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+button:hover {
+    background: #80808021;
+}
