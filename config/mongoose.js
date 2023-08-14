@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 // mongoose.connect('mongodb://127.0.0.1:27017/habit-tacker');
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/contacts_list_database');
+    // await mongoose.connect('mongodb://127.0.0.1:27017/contacts_list_database');
+    await mongoose.connect('mongodb+srv://shubhamchauhan9:Y14cynvCeMD4dWz0@cluster0.exxmt4y.mongodb.net/');
 
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
